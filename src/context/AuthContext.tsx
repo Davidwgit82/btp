@@ -1,10 +1,10 @@
 // src/context/AuthContext.tsx
-import React, { useState, useEffect, ReactNode, createContext } from "react";
+import { useState, useEffect, type ReactNode, createContext } from "react";
 import { login as loginApi } from "../services/api";
-import { User } from "../types";
+import { type User } from "../types";
 
 // Définition du type du contexte
-interface AuthContextType {
+export interface AuthContextType {
   isAuthenticated: boolean;
   user: User | null;
   login: (credentials: Pick<User, "email" | "password">) => Promise<void>;

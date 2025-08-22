@@ -21,7 +21,7 @@ function Accueil() {
 
   return (
     <div className="row">
-      <div className="col-md-6">
+      <div className="col-12 col-md-6">
         <h2 className="mb-3">Ajouter un utilisateur</h2>
         {isAdmin ? (
           <UserForm onUserCreated={fetchUsers} />
@@ -31,7 +31,7 @@ function Accueil() {
           </div>
         )}
       </div>
-      <div className="col-md-6">
+      <div className="col-12 col-md-6">
         <h2 className="mb-3">Liste des utilisateurs</h2>
         {users.length > 0 ? (
           <ul className="list-group">
