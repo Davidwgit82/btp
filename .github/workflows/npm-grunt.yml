@@ -1,0 +1,23 @@
+# .github/workflows/deploy.yml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Exécute le workflow à chaque push sur la branche 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # Étape 1 : Clone votre dépôt
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18 # Vous pouvez ajuster la version de Node ici
+      - run: npm install # Étape 2 : Installe les dépendances
+      - run: npm run build # Étape 3 : Compile le projet Vite
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3 # Utilise une action de déploiement
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist # Le dossier à déployer
